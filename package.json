@@ -1,0 +1,19 @@
+{
+  "name": "typescript-build-react",
+  "version": "1.0.0",
+  "description": "",
+  "main": "webpack.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yanlele/TypeScript-build-react.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yanlele/TypeScript-build-react/issues"
+  },
+  "homepage": "https://github.com/yanlele/TypeScript-build-react#readme"
+}
