@@ -6,7 +6,6 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const tsImportPluginFactory = require('ts-import-plugin');
 
-const config = require('./dist/server/modules/config').default;
 
 fs.emptyDirSync(path.join(__dirname, './dist/'));
 
@@ -19,7 +18,7 @@ module.exports = {
         path: path.resolve(__dirname, './dist/'),
         filename: 'app.min.js?[chunkhash:8]',
         chunkFilename: 'chunk.[name].min.js?[chunkhash:8]',
-        publicPath: '/public/'
+        publicPath: '/'
     },
     resolve: {
         // Add locale alias
@@ -89,7 +88,7 @@ module.exports = {
         new HtmlWebpackPlugin({
             chunksSortMode: 'none',
             inject: false,
-            filename: '../views/index.html',
+            filename: './index.html',
             template: './app/views/index.html'
         }),
         new MiniCssExtractPlugin({

@@ -1,7 +1,3 @@
-import ILocalePackage from '../../../src/server/interfaces/locale';
-import {defaultPageSize} from '../../../src/server/types/common';
-import * as rules from '../../../src/server/types/rules';
-
 // Set language package: pack in "webpack.config.js" alias
 // @ts-ignore: next
 import localeSystem from 'localeSystem';
@@ -18,15 +14,6 @@ const socket = $app.getAttribute('data-socket') || '';
 export const socketServer = /^\d+$/.test(socket) ? `${protocol === 'https:' ? 'wss' : 'ws'}://${window.location.hostname}:${socket}` : socket;
 // Auth login
 export const authLogin = $app.getAttribute('data-auth-login') === 'true';
-
-// Client language package
-export const localePkg: ILocalePackage = localeSystem;
-
-// Page size
-export const pageSize = defaultPageSize;
-
-// Form valid Rules
-export const formValidRules = rules;
 
 export const welcomePageLayout = {
     lg: 12,

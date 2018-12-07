@@ -4,7 +4,8 @@
   "description": "",
   "main": "webpack.config.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "webpack -w",
+    "server": "live-server dist"
   },
   "repository": {
     "type": "git",
@@ -13,7 +14,8 @@
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/yanlele/TypeScript-build-react/issues"
+    "dev": "webpack -w",
+    "server": "live-server dist"
   },
   "homepage": "https://github.com/yanlele/TypeScript-build-react#readme",
   "devDependencies": {
@@ -39,6 +41,7 @@
     "isomorphic-fetch": "^2.2.1",
     "less": "^3.8.1",
     "less-loader": "^4.1.0",
+    "live-server": "^1.2.1",
     "mini-css-extract-plugin": "^0.4.4",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
@@ -57,5 +60,7 @@
     "webpack": "^4.21.0",
     "webpack-cli": "^3.1.2"
   },
-  "dependencies": {}
+  "dependencies": {
+    "fs-extra": "^7.0.1"
+  }
 }

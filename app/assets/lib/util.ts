@@ -1,11 +1,3 @@
-import {PaginationConfig} from 'antd/lib/pagination';
-import md5 from 'blueimp-md5';
-
-import {IIndexMap, INumEnumValue} from '../interfaces/common';
-import {IContentData} from '../interfaces/redux';
-import {UserPermissionCode} from '../types/common';
-
-import {salt} from './const';
 
 // Get app DOM
 export const $app: HTMLElement = document.getElementById('app') || document.body;
@@ -66,57 +58,6 @@ export function isObjEmpty(obj: any): boolean {
 
     return true;
 }
-
-/**
- * Translate password
- * @param  {string} pwd password
- * @return {string}     translate result
- */
-export function translatePwd(pwd: string): string {
-    return md5(pwd, salt);
-}
-
-/**
- * Check user's permission
- * @param  {number}         userPermission User's permission
- * @param  {PermissionCode} permissionCode Permission code
- * @return {boolean}                       Pass or not
- */
-export function checkUserPermission(userPermission: number = 0, permissionCode: UserPermissionCode): boolean {
-    return (userPermission & permissionCode) > 0;
-}
-
-/**
- * Get page data
- * @param  {IContentData}     data Content Data
- * @return {PaginationConfig}      Page config
- */
-export function getPageData(data: IContentData): PaginationConfig {
-    return {
-        current: data.page,
-        pageSize: data.pageSize,
-        pageSizeOptions: ['10', '50', '100'],
-        showSizeChanger: true,
-        total: data.total,
-    };
-}
-
-/**
- * Get number enums list
- * @param  {Object}          enums Enums value
- * @return {INumEnumValue[]}       Enum List
- */
-export function getNumEnumsList(enums: any): INumEnumValue[] {
-    return Object.keys(enums).filter((key) => {
-        return isNaN(parseInt(key, 10));
-    }).map((key) => {
-        return {
-            key,
-            value: enums[key]
-        };
-    });
-}
-
 /**
  * Filter empty field
  * @param  {object} data Filter data
@@ -130,25 +71,6 @@ export function filterEmptyFields(data: object): any {
         }
     }
     return returnData;
-}
-
-/**
- * Parse location search to query map
- * @param  {string}            search Search sting
- * @return {IIndexMap<string>}        Query map
- */
-export function parseLocationSearch(search: string): IIndexMap<string> {
-    const query: IIndexMap<string> = {};
-    if (search) {
-        const matchData = search.match(/[^\?&]+=[^\?&]+/g);
-        if (matchData) {
-            matchData.forEach((queryString) => {
-                const [queryIndex, queryData] = queryString.split('=');
-                query[queryIndex] = queryData;
-            });
-        }
-    }
-    return query;
 }
 
 /**

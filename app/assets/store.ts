@@ -1,7 +1,5 @@
-import { applyMiddleware, createStore, Store } from 'redux';
+import { applyMiddleware, createStore } from 'redux';
 import thunk from 'redux-thunk';
-
-import {IReduxStoreState} from './interfaces/redux';
 
 import reducer from './reducers/';
 
@@ -16,7 +14,7 @@ function configureStore(initialState) {
     return debugMiddlewareStore;
 }
 
-let store: Store<IReduxStoreState>;
+let store;
 // @ts-ignore:next
 if (process.env.NODE_ENV === 'production') {
     store = createStoreWithMiddleware(reducer, {});

@@ -1,13 +1,3 @@
-import {ThunkAction} from 'redux-thunk';
-
-import {IActionData, IReduxStoreState} from '../interfaces/redux';
-
-/**
- * Redux Thunk func
- * @type {function}
- */
-export type ActionThunkFunc = ThunkAction<void, IReduxStoreState, any, IActionData>;
-
 /**
  * Redux callback function
  * @type {function}
