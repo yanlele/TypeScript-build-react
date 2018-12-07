@@ -3,6 +3,7 @@
 *.log
 *.zip
 *.log
+package-lock.json
 
 # folders
 node_modules/
