@@ -8,25 +8,25 @@ const tsImportPluginFactory = require('ts-import-plugin');
 
 const config = require('./dist/server/modules/config').default;
 
-fs.emptyDirSync(path.join(__dirname, './dist/client/'));
+fs.emptyDirSync(path.join(__dirname, './dist/'));
 
 const env = /-p/.test(process.argv[2]) ? 'production' : 'development'; //Set webpack env
 
 module.exports = {
     mode: env,
-    entry: './client/assets/app.tsx',
+    entry: './app/assets/app.tsx',
     output: {
-        path: path.resolve(__dirname, './dist/client/'),
+        path: path.resolve(__dirname, './dist/'),
         filename: 'app.min.js?[chunkhash:8]',
         chunkFilename: 'chunk.[name].min.js?[chunkhash:8]',
         publicPath: '/public/'
     },
     resolve: {
         // Add locale alias
-        alias: {
-            localeAntd: `antd/lib/locale-provider/${config.locale}`,
-            localeSystem: path.resolve(__dirname, `./dist/server/locale/${config.locale}`)
-        },
+        // alias: {
+        //     localeAntd: `antd/lib/locale-provider/${config.locale}`,
+        //     localeSystem: path.resolve(__dirname, `./dist/server/locale/${config.locale}`)
+        // },
         // Add `.ts` and `.tsx` as a resolvable extension.
         extensions: [".ts", ".tsx", ".js"]
     },
@@ -43,7 +43,7 @@ module.exports = {
                     {
                         loader: 'ts-loader',
                         options: {
-                            configFile: path.join(__dirname, './client/tsconfig.json'),
+                            configFile: path.join(__dirname, './app/tsconfig.json'),
                             getCustomTransformers: () => ({
                                 before: [ tsImportPluginFactory({
                                     libraryDirectory: 'es',
@@ -90,7 +90,7 @@ module.exports = {
             chunksSortMode: 'none',
             inject: false,
             filename: '../views/index.html',
-            template: './client/views/index.html'
+            template: './app/views/index.html'
         }),
         new MiniCssExtractPlugin({
             // Options similar to the same options in webpackOptions.output
